@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+# Export the following expected by SDK infrastructure
+# $ export SPECTRUM_DISCOVER_HOST=https://<spectrum_discover_host>
+# $ export AGENT_NAME=<agent_name>
+# $ export AGENT_USER=<agent_user>
+# $ export AGENT_USER_PASSWORD=<agent_user_password>
+# $ export KAFKA_DIR=<directory_to_save_certificates>
+# $ export LOG_LEVEL=<ERROR WARNING INFO DEBUG>
+
+# Export the following to identify where Scale scan should originate.
+# export DISCOVER_SCANDIR=/<your path here>
+
+# Export the following expected by SDK infrastructure
+export SPECTRUM_DISCOVER_HOST=https://192.168.1.2
+export AGENT_NAME=redbookagent
+export AGENT_USER=
+export AGENT_USER_PASSWORD=
+#export KAFKA_DIR=<directory_to_save_certificates>
+export LOG_LEVEL=INFO

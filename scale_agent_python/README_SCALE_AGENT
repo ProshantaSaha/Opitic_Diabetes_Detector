@@ -1,0 +1,48 @@
+This file provides an overview of the deep inspect agent implemented in
+python to extract values of Scale file user-defined attributes and assign
+those values to Discover tags with the same suffic.
+
+SUMMARY
+This example of a Discover action/deep inspect agent extracts Spectrum Scale
+user-defined attributes from files that the Discover appliance has access to.
+
+This example extracts the value of user=defined Scale attribute of the form
+"user.mlproject" and assigns that value to the Discover tag "mlproject."
+The tags to receive values are defined by the Discover deep inspect policy
+associated with the scale_agent.py agent.
+
+FILES
+Files included in this example:
+agent_lib.py:           Discover Python library/boilerplate for action agents
+sourceme:               Shell script to be sourced (see README.md)
+README.md:              Discover text describing basic usage of boilerplate
+README_SCALE_AGENT:     This file
+requirements.txt:       Required packages to be installed (see README.md)
+sample_action_agent.py: Discover example action agent in Python
+scale_agent.py:         Example Scale action agent
+
+CONFIGURING SCALE AGENT
+
+1. Using the Discover UI, create the tags with names corresponding to the
+suffix (i.e., string after "user.") of Scale user-defined attributes of files
+to be processed.  Note that these tag names are to be supplied to the policy
+in the extract_tags list.
+
+2. Specify the environment specific variables as shown in sourceme.
+Note the AGENT_NAME (uprojectagent) will be registered with Discover and,
+subsequently, visible in the Agent listing in the Discover UI.
+
+3. In the Discover UI, navigate to the Metadata pane and select the Policies
+tab. Add the policy "uprojectpolicy," specifying:
+  A. that it is a DEEPINSPECT type policy
+  B. Agent name matches environment variable AGENT_NAME as defined in the
+     sourceme file.
+  C. Parameter is "extract_tags"
+  D. Value is the list of tag names.
+
+4. Execute the deep inspect agent on a Scale node running as user with
+sufficient privilege to execute Scale mm* commands, etc.
+   # ./scale_agent.py > scale_agent.log 2>&1 &
+
+5. In the Discover UI, navigate to the Policies tab in Metadata, and run the
+policy by selecting the "start" icon in the policy management bar.
